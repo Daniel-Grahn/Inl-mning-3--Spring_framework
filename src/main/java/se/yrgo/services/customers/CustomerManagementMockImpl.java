@@ -1,5 +1,6 @@
 package se.yrgo.services.customers;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -19,37 +20,45 @@ public class CustomerManagementMockImpl implements CustomerManagementService {
 
 	@Override
 	public void newCustomer(Customer newCustomer) {
-
+		customerMap.put(newCustomer.getCustomerId(), newCustomer);
 	}
 
 	@Override
 	public void updateCustomer(Customer changedCustomer) {
-
+		customerMap.put(changedCustomer.getCustomerId(), changedCustomer);
 
 	}
 
 	@Override
 	public void deleteCustomer(Customer oldCustomer) {
-		// TODO Auto-generated method stub
+		customerMap.remove(oldCustomer.getCustomerId());
 
 	}
 
 	@Override
 	public Customer findCustomerById(String customerId) throws CustomerNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		Customer CustomerById = customerMap.get(customerId);
+		return CustomerById;
 	}
 
 	@Override
 	public List<Customer> findCustomersByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Customer> findCustomers = new ArrayList<>();
+		for(Customer c : customerMap.values()){
+			if(c.getCompanyName().equals(name)){
+				findCustomers.add(c);
+			}
+		}
+		return findCustomers;
 	}
 
 	@Override
 	public List<Customer> getAllCustomers() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Customer> allCustomers = new ArrayList<>();
+		for(Customer c : customerMap.values()){	
+			allCustomers.add(c);
+		}
+		return allCustomers;
 	}
 
 	@Override
