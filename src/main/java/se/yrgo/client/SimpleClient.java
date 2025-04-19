@@ -11,7 +11,7 @@ public class SimpleClient {
 
     public static void main(String[] args) {
         ClassPathXmlApplicationContext container = new ClassPathXmlApplicationContext("application.xml");
-        CustomerManagementService service = container.getBean("cmmIMPL",
+        CustomerManagementService service = container.getBean("CustomerManagementService",
             CustomerManagementService.class);
         
         List<Customer> customer = service.getAllCustomers();

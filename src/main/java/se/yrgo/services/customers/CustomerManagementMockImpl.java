@@ -17,7 +17,6 @@ public class CustomerManagementMockImpl implements CustomerManagementService {
 		customerMap.put("RM210", new Customer("RM210" ,"River Ltd", "some more notes"));
 	}
 
-
 	@Override
 	public void newCustomer(Customer newCustomer) {
 		customerMap.put(newCustomer.getCustomerId(), newCustomer);
@@ -62,17 +61,18 @@ public class CustomerManagementMockImpl implements CustomerManagementService {
 	}
 
 	@Override
-	public Customer getFullCustomerDetail(String customerId) throws CustomerNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+	public Customer getFullCustomerDetail(String customerId) throws CustomerNotFoundException { //I don't know if this is right
+		Customer customer = findCustomerById(customerId);
+		return customer;
 	}
 
 	@Override
 	public void recordCall(String customerId, Call callDetails) throws CustomerNotFoundException {
 		//First find the customer
-
+		Customer customer = findCustomerById(customerId);
 		//Call the addCall on the customer
-
+		customer.addCall(callDetails);
+		
 	}
 
 }

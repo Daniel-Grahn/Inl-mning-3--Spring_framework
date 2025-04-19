@@ -2,8 +2,7 @@ package se.yrgo.services.calls;
 
 import java.util.Collection;
 
-import se.yrgo.domain.Action;
-import se.yrgo.domain.Call;
+import se.yrgo.domain.*;
 import se.yrgo.services.customers.CustomerNotFoundException;
 
 public interface CallHandlingService {
